@@ -1,0 +1,955 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>DinoAd API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;Response&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="Response">Response</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://github.com/huynhtansi'>Documentation Powered by HTSI</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="introduction">Introduction</h1>
+
+<p>Welcome to the DinoAd API! You can use our API to access Dino Adserver API endpoints, which can get information on various advertisers, campaigns, and banners in our database.</p>
+
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"Authorization: &lt;Authentication Key&gt;"</span>
+</code></pre>
+
+          <h1 id="authentication">Authentication</h1>
+
+<h2 id="register">Register</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"auth_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Authentication Key&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Using this endpoint to create a new user on our system.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {endpoint}/api/auth/register</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>String</td>
+<td>user&rsquo;s id</td>
+</tr>
+<tr>
+<td>password</td>
+<td>String</td>
+<td>security characters</td>
+</tr>
+<tr>
+<td>platform</td>
+<td>String</td>
+<td>&lsquo;Android&rsquo; or &#39;iOS&rsquo; (Optional)</td>
+</tr>
+<tr>
+<td>deviceToken</td>
+<td>String</td>
+<td>device&rsquo;s identifier for using push notification</td>
+</tr>
+</tbody></table>
+
+<h2 id="manual-sign-in">Manual Sign In</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"auth_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Authentication Key&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Using this endpoint to sign in our system.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {endpoint}/api/auth/signin</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>String</td>
+<td>user&rsquo;s id</td>
+</tr>
+<tr>
+<td>password</td>
+<td>String</td>
+<td>security characters</td>
+</tr>
+<tr>
+<td>platform</td>
+<td>String</td>
+<td>&#39;Android&rsquo; or &#39;iOS&rsquo; (Optional)</td>
+</tr>
+<tr>
+<td>deviceToken</td>
+<td>String</td>
+<td>device&rsquo;s identifier for using push notification</td>
+</tr>
+</tbody></table>
+
+<h2 id="sign-in-with-facebook">Sign In with Facebook</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"auth_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Authentication Key&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Using this endpoint to sign in our system.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {endpoint}/api/auth/signin_fb</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>platform</td>
+<td>String</td>
+<td>&#39;Android&rsquo; or &#39;iOS&rsquo; (Optional)</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>String</td>
+<td>Access token retreived from Facebook</td>
+</tr>
+<tr>
+<td>deviceToken</td>
+<td>String</td>
+<td>device&rsquo;s identifier for using push notification</td>
+</tr>
+</tbody></table>
+
+<h2 id="sign-in-with-google">Sign In with Google+</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"auth_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;Authentication Key&gt;"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Using this endpoint to sign in our system.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {endpoint}/api/auth/signin_gp</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>platform</td>
+<td>String</td>
+<td>&#39;Android&rsquo; or &#39;iOS&rsquo; (Optional)</td>
+</tr>
+<tr>
+<td>accessToken</td>
+<td>String</td>
+<td>Access token retreived from Google Plus</td>
+</tr>
+<tr>
+<td>deviceToken</td>
+<td>String</td>
+<td>device&rsquo;s identifier for using push notification</td>
+</tr>
+</tbody></table>
+
+<h2 id="change-password">Change Password</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check your email to retreive verify code"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Using this endpoint to request new password.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {endpoint}/api/auth/change_pw</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+<tr>
+<td>Auth-Key</td>
+<td>authentication key</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>newPassword</td>
+<td>String</td>
+<td>security characters</td>
+</tr>
+</tbody></table>
+
+<h2 id="forgot-password">Forgot Password</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check your email to get verify code"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Using this endpoint to reset password.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {endpoint}/api/auth/forgot_pw</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Email that used to register account</td>
+</tr>
+</tbody></table>
+
+          <h1 id="users">Users</h1>
+
+<h2 id="get-profile">Get profile</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"userID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"si.huynh"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"birthDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">11111111111</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalPoint"</span><span class="p">:</span><span class="w"> </span><span class="mi">71010</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalView"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"facebookToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45712681gdg9143060123ff0"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"googleToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55348fdf6123514354fh35"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"si.huynh@dinosys.vn"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"martialStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ho Chi Minh"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves user&rsquo;s profile.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET {endpoint}/api/user/getprofile</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+<tr>
+<td>Auth-Key</td>
+<td>authentication key</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<h2 id="update-profile">Update profile</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"userID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"si.huynh"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"birthDate"</span><span class="p">:</span><span class="w"> </span><span class="mi">11111111111</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalPoint"</span><span class="p">:</span><span class="w"> </span><span class="mi">71010</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalView"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"facebookToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45712681gdg9143060123ff0"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"googleToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55348fdf6123514354fh35"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"si.huynh@dinosys.vn"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maritalStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ho Chi Minh"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint updates user&rsquo;s profile.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {endpoint}/api/user/getprofile</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+<tr>
+<td>Auth-Key</td>
+<td>authentication key</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>birthDate</td>
+<td>long</td>
+<td>birth of date in miliseconds</td>
+</tr>
+<tr>
+<td>totalPoint</td>
+<td>long</td>
+<td>Amount of points that user got</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Using to register, confirm info, verify code&hellip;</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>String</td>
+<td>&ldquo;Female&rdquo; or &ldquo;Male&rdquo;</td>
+</tr>
+<tr>
+<td>region</td>
+<td>String</td>
+<td>Present location</td>
+</tr>
+<tr>
+<td>maritalStastus</td>
+<td>String</td>
+<td>&ldquo;Single&quot;or &quot;Married&rdquo;</td>
+</tr>
+<tr>
+<td>facebookToken</td>
+<td>String</td>
+<td>Token retrieved from Facebook</td>
+</tr>
+<tr>
+<td>googleToken</td>
+<td>String</td>
+<td>Token retrieved form Google Plus</td>
+</tr>
+</tbody></table>
+
+          <h1 id="banners">Banners</h1>
+
+<h2 id="get-all-banners">Get All Banners</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"bannerid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"campaignid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"contenttype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"pluginversion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"storagetype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3473ec14ba94cb29be3729db693f4c82.gif"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"imageurl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"htmltemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"htmlcache"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"240"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=-GlZvDxv9pA"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"alt"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"statustext"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"bannertext"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finding Dory Banner"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"adserver"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"block"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"capping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"session_capping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"compiledlimitation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"acl_plugins"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"append"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"bannertype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"alt_filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"alt_imageurl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"alt_contenttype"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-06 10:33:44"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"acls_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"transparent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N;"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"ext_bannertype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"prepend"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"iframe_friendly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"point"</span><span class="p">:</span><span class="s2">"500"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"last"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalPages"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalElements"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numberOfElements"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sort"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"first"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"number"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all banners.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET {endpoint}/api/banners/getall</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<h2 id="get-a-specific-banner">Get a Specific banner</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"bannerid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"campaignid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contenttype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gif"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pluginversion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"storagetype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3473ec14ba94cb29be3729db693f4c82.gif"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"imageurl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"htmltemplate"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"htmlcache"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"height"</span><span class="p">:</span><span class="w"> </span><span class="s2">"240"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=-GlZvDxv9pA"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"alt"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"statustext"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bannertext"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Finding Dory Banner"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"adserver"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"block"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"capping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"session_capping"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"compiledlimitation"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"acl_plugins"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"append"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bannertype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"alt_filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"alt_imageurl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"alt_contenttype"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-07-06 10:33:44"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"acls_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000-00-00 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"transparent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ext_bannertype"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prepend"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"iframe_friendly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"point"</span><span class="p">:</span><span class="s2">"500"</span><span class="w">
+
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific banner.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET {endpoint}/api/banner/getBannerById/&lt;ID&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the banner to retrieve</td>
+</tr>
+</tbody></table>
+
+          <h1 id="rewards">Rewards</h1>
+
+<h2 id="get-all-rewards">Get All Rewards</h2>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="nt">"createdBy"</span><span class="p">:</span><span class="s2">"system"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-07-11T07:36:35.139401Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"restaurant"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"An Dong Food Court"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"nameVi"</span><span class="p">:</span><span class="s2">"An Dong Food Court"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"identifier"</span><span class="p">:</span><span class="s2">"an-dong-food-court"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"outletCode"</span><span class="p">:</span><span class="s2">"234"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"opening"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"telephone"</span><span class="p">:</span><span class="s2">"(+84 8) 3833 6688 ext.2221"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"fax"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"email"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">10.7578883</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"lon"</span><span class="p">:</span><span class="mf">106.671219</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"facebook"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"googleplus"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"foursquare"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"address"</span><span class="p">:{},</span><span class="w">
+            </span><span class="nt">"outletOpenings"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"rewards"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"promotions"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"logo"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"poster"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"active"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+        </span><span class="p">}],</span><span class="w">
+        </span><span class="nt">"last"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalPages"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalElements"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"numberOfElements"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sort"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"first"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"size"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"number"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"result_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESULT_OK"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"result_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all rewards.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST {endpoint}/api/reward/getall</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+          <h1 id="errors">Errors</h1>
+
+<p>The DinoAd Server API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified kitten could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&rsquo;m a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="Response">Response</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
